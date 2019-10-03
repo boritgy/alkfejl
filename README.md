@@ -2,14 +2,14 @@
 
 projekt: szállodai foglalások kezelése
 
-Szerepkörök:
+**Szerepkörök:**
 
 Vendég
 Regisztrált felhasználó
 Admin
 
-Funkcionális követelmények:
-<\n>
+**Funkcionális követelmények:**
+
 Regisztráció
 Bejelentkezés
 Bejelentkezés után:
@@ -18,14 +18,14 @@ Bejelentkezés után:
    Extra szolgáltatás választása
    Szobaszervíz igénylése
    
-Nem funkcionális követelmények:
-<\n>
+**Nem funkcionális követelmények:**
+
 Felhasználóbarát
 Biztonság
 Képek
-<\n>
-Szakterületi fogalomjegyzék:
-<\n>
+
+**Szakterületi fogalomjegyzék:**
+
 galéria: összefüggő képek csoportja
 fogalalás: az adatbázisban a szabad és lefoglalt szobák listája
 elérhető időpont: amit még lefoglalhat a felhasználó
