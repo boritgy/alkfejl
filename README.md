@@ -29,10 +29,11 @@ Biztonság
 
 
 
-
+/*
 A feladatleírásnak a következő elemeket kell tartalmaznia rövid leírás vagy felsorolás formájában:
 
 feladat funkcionális követelményeit
 feladat nem funkcionális követelményei
 szakterületi fogalomjegyzék (azon fogalmak definiálása, ami köré az alkalmazás épül)
 szerepkörök
+*/
