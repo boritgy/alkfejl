@@ -9,7 +9,7 @@ Regisztrált felhasználó
 Admin
 
 Funkcionális követelmények:
-
+<\n>
 Regisztráció
 Bejelentkezés
 Bejelentkezés után:
@@ -19,13 +19,13 @@ Bejelentkezés után:
    Szobaszervíz igénylése
    
 Nem funkcionális követelmények:
-
+<\n>
 Felhasználóbarát
 Biztonság
 Képek
-
+<\n>
 Szakterületi fogalomjegyzék:
-
+<\n>
 galéria: összefüggő képek csoportja
 fogalalás: az adatbázisban a szabad és lefoglalt szobák listája
 elérhető időpont: amit még lefoglalhat a felhasználó
