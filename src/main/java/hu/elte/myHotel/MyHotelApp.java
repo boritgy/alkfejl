@@ -1,0 +1,13 @@
+package hu.elte.myHotel;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MyHotelApp {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MyHotelApp.class, args);
+	}
+
+}
