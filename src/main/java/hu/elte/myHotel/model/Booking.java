@@ -41,12 +41,11 @@ public class Booking {
     }
 
     @Column
-    @NotNull
-    private Date arriveDate;
+    private String arriveDate;
 
     @Column
     @NotNull
-    private Date leaveDate;
+    private String leaveDate;
 
     @Column
     @NotNull
@@ -65,10 +64,16 @@ public class Booking {
         NEW, DOING, DONE
     }
 
-    /*OneToMany(mappedBy = "booking")
-    private List<Room> room;
+    @ManyToMany
+    private List<Calendar> calendar;
 
-    @ManyToOne*/
+    @ManyToOne
+    private Room room;
+
+    @OneToOne
+    private Extra extra;
+
+    @ManyToOne
     private User user;
 
     public void setUser(User user) {

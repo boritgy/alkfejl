@@ -42,13 +42,9 @@ public class User {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
 
-    //@JsonIgnore
-    //@OneToMany(mappedBy = "user")
-    //private List<Booking> booking;
-
-    //@JsonIgnore
-    //@OneToMany(mappedBy = "user")
-    //private List<Room> room;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Booking> booking;
 
     public String getUsername() {
         return username;

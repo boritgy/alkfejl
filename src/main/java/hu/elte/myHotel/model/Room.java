@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -34,14 +35,13 @@ public class Room {
     @Column
     private Integer price;
 
-    /*@ManyToOne
-    private User user;
+    @OneToMany(mappedBy = "room")
+    private List<Booking> booking;
 
-    @JsonIgnore
-    @ManyToOne*/
-    private Booking booking;
+    @ManyToMany
+    private List<Calendar> calendar;
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setBooking(Booking b) {
+        booking.add(b);
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,8 +21,8 @@ public class Calendar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private Room room;
+    //@Column
+    //private Room rooms;
 
     @Column
     @NotNull
@@ -31,4 +32,9 @@ public class Calendar {
     @NotNull
     private Date leaveDate;
 
+    @ManyToMany(mappedBy = "calendar")
+    private List<Booking> booking;
+
+    @ManyToMany(mappedBy = "calendar")
+    private List<Room> room;
 }
