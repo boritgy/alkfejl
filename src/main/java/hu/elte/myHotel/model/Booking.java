@@ -36,20 +36,21 @@ public class Booking {
     @Enumerated(EnumType.STRING)
     private Meal meal;
 
+    @Column
+    private String arrivedate;
+
+    @Column
+    private String leavedate;
+
     public enum Meal {
         BREAKFAST, HB, ALLINCLUSIVE
     }
 
-    @Column
-    private String arriveDate;
+
 
     @Column
     @NotNull
-    private String leaveDate;
-
-    @Column
-    @NotNull
-    private Integer roomNumber;
+    private Integer roomnumber;
 
     @Column
     @NotNull
@@ -93,7 +94,7 @@ public class Booking {
     }
 
     public Integer getRoom() {
-        return roomNumber;
+        return roomnumber;
     }
 
     public void add(Room r){

@@ -26,15 +26,16 @@ public class Calendar {
 
     @Column
     @NotNull
-    private Date arriveDate;
+    private String arrivedate;
 
     @Column
     @NotNull
-    private Date leaveDate;
+    private String leavedate;
 
     @ManyToMany(mappedBy = "calendar")
     private List<Booking> booking;
 
     @ManyToMany(mappedBy = "calendar")
     private List<Room> room;
+
 }

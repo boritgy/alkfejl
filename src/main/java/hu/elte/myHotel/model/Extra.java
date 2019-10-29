@@ -6,8 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Data
@@ -32,7 +30,6 @@ public class Extra {
     @Column
     private boolean balcony;
 
-    @NotNull
     @Column
     private boolean view;
 
@@ -43,8 +40,9 @@ public class Extra {
     private boolean wellness;
 
     @Column
-    private boolean extraBed;
+    private boolean extrabed;
 
     @OneToOne
     private Booking booking;
+
 }

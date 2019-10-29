@@ -30,7 +30,7 @@ public class Room {
     private boolean balcony;
 
     @Column
-    private boolean extraBed;
+    private boolean extrabed;
 
     @Column
     private Integer price;
