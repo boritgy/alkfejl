@@ -1,0 +1,43 @@
+<div>
+    <h1>Booking list</h1>
+    <div>
+        <app-status-filter
+            [statusFilter]="statusFilter"
+            (filterChange)="filterChange($event);"
+        ></app-status-filter>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--
+                ez az if nem muszáj, mert ha üres az issues,
+                akkor úgysem fog megjelenni egy sor sem.
+                Csak az ng-container szemléltetése miatt van itt.
+            -->
+            <ng-container
+                *ngIf="filteredBookings.length > 0"
+            >
+                <tr
+                    *ngFor="let booking of filteredBookings"
+                >
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.price }}</td>
+                    <td>{{ booking.status }}</td>
+                </tr>
+            </ng-container>
+            <tr
+                *ngIf="filteredBookings.length === 0"
+            >
+                <td
+                    colspan="3"
+                >No bookings</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
