@@ -16,11 +16,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RoutingModule } from './routing/routing.module';
 import { LandingComponent } from './landing/landing.component';
+import { StatusFilterComponent } from './status-filter/status-filter.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookingListComponent,
+    BookingFormComponent,
+    StatusFilterComponent,
     LandingComponent
   ],
   imports: [
