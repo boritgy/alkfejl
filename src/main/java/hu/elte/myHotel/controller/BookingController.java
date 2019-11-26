@@ -1,19 +1,21 @@
 package hu.elte.myHotel.controller;
 
 import hu.elte.myHotel.model.Booking;
-import hu.elte.myHotel.model.Room;
+import hu.elte.myHotel.model.Extra;
 import hu.elte.myHotel.repository.BookingRepository;
-import hu.elte.myHotel.repository.RoomRepository;
+import hu.elte.myHotel.repository.ExtraRepository;
 import hu.elte.myHotel.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/booking")
+@RequestMapping("/bookings")
 public class BookingController {
 
     @Autowired
@@ -23,22 +25,22 @@ public class BookingController {
     private BookingRepository bookingRepository;
 
     @Autowired
-    private RoomRepository roomRepository;
+    private ExtraRepository extraRepository;
 
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("")
-    public Iterable<Booking> getBooking() {
+    public Iterable<Booking> getBookings() {
         return bookingRepository.findAll();
     }
 
-    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("")
     public ResponseEntity<Booking> createBooking(
             @RequestBody Booking booking
     ) {
         booking.setUser(authenticatedUser.getUser());
-        Booking savedBookings = bookingRepository.save(booking);
-        return ResponseEntity.ok(savedBookings);
+        Booking savedIssue = bookingRepository.save(booking);
+        return ResponseEntity.ok(savedIssue);
     }
 
     @Secured({ "ROLE_ADMIN" })
@@ -54,11 +56,19 @@ public class BookingController {
             }
             Booking oldBooking = oBooking.get();
             oldBooking.setStatus(booking.getStatus());
-            Booking savedBooking = bookingRepository.save(oldBooking);
-            return ResponseEntity.ok(savedBooking);
+            Booking savedIssue = bookingRepository.save(oldBooking);
+
+            /*
+            issue.setId(oldIssue.getId());
+            issue.setMessages(oldIssue.getMessages());
+            ...
+             */
+
+            return ResponseEntity.ok(savedIssue);
         } else {
             return ResponseEntity.notFound().build();
         }
+
     }
 
     @Secured({ "ROLE_USER", "ROLE_ADMIN" })
@@ -74,18 +84,18 @@ public class BookingController {
         }
     }
 
-    @PostMapping("/{id}/room")
-    public ResponseEntity<Room> addRoom(
-            @RequestBody Room room,
+    @PostMapping("/{id}/messages")
+    public ResponseEntity<Extra> addExtra(
+            @RequestBody Extra extra,
             @PathVariable Integer id
     ) {
         Optional<Booking> oBooking = bookingRepository.findById(id);
         if (oBooking.isPresent()) {
             Booking booking = oBooking.get();
-            booking.add(room);
-            room.setBooking(booking);
-            Room createdRoom = roomRepository.save(room);
-            return ResponseEntity.ok(createdRoom);
+            booking.setExtra(extra);
+            extra.setBooking(booking);
+            Extra createdExtra = extraRepository.save(extra);
+            return ResponseEntity.ok(createdExtra);
         } else {
             return ResponseEntity.notFound().build();
         }

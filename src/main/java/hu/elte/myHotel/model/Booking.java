@@ -1,5 +1,6 @@
 package hu.elte.myHotel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +11,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -28,29 +28,20 @@ public class Booking {
     private String name;
 
     @Column
-    @NotNull
-    private Integer bed;
-
-    @Column
-    @NotNull
     @Enumerated(EnumType.STRING)
     private Meal meal;
-
-    @Column
-    private String arrivedate;
-
-    @Column
-    private String leavedate;
 
     public enum Meal {
         BREAKFAST, HB, ALLINCLUSIVE
     }
 
-
+    @Column
+    @NotNull
+    private String arriveDate;
 
     @Column
     @NotNull
-    private Integer roomnumber;
+    private String leaveDate;
 
     @Column
     @NotNull
@@ -65,39 +56,24 @@ public class Booking {
         NEW, DOING, DONE
     }
 
-    @ManyToMany
-    private List<Calendar> calendar;
+    @Column
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
-    @ManyToOne
-    private Room room;
-
-    @OneToOne
-    private Extra extra;
+    @Column
+    @UpdateTimestamp
+    private LocalDateTime modifiedAt;
 
     @ManyToOne
     private User user;
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    @OneToOne
+    private Extra extra;
 
-    public User getUser() {
-        return user;
-    }
+    @JsonIgnore
+    @ManyToMany
+    private List<Room> rooms;
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Integer getRoom() {
-        return roomnumber;
-    }
-
-    public void add(Room r){
-        //szoba hozzáadása a foglaláshoz
-    }
+    @ManyToOne
+    private Calendar calendar;
 }

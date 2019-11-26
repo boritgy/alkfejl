@@ -1,5 +1,6 @@
 package hu.elte.myHotel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,17 +10,14 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Extra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @ManyToOne
-    private User user;
 
     @Column
     private boolean parking;
@@ -40,9 +38,8 @@ public class Extra {
     private boolean wellness;
 
     @Column
-    private boolean extrabed;
+    private boolean extraBed;
 
     @OneToOne
     private Booking booking;
-
 }

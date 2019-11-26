@@ -1,0 +1,34 @@
+<!--<div>
+    <h1>Booking list</h1>
+    <div>
+        <app-status-filter></app-status-filter>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container
+                *ngIf="issueService.filteredIssues.length > 0"
+            >
+                <tr
+                    *ngFor="let issue of issueService.filteredIssues"
+                    [routerLink]="['/', 'bookings', bookings.id]"
+                >
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.status }}</td>
+                </tr>
+            </ng-container>
+            <tr
+                *ngIf="issueService.filteredIssues.length === 0"
+            >
+                <td
+                    colspan="3"
+                >No issues</td>
+            </tr>
+        </tbody>
+    </table>
+</div>-->

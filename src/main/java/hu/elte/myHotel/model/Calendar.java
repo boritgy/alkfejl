@@ -1,41 +1,36 @@
 package hu.elte.myHotel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
-@EqualsAndHashCode
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Calendar {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //@Column
-    //private Room rooms;
+    @Column
+    private String arriveDate;
 
     @Column
-    @NotNull
-    private String arrivedate;
+    private String leaveDate;
 
-    @Column
-    @NotNull
-    private String leavedate;
+    @JsonIgnore
+    @OneToMany (mappedBy = "calendar")
+    private List<Booking> bookings;
 
-    @ManyToMany(mappedBy = "calendar")
-    private List<Booking> booking;
-
-    @ManyToMany(mappedBy = "calendar")
-    private List<Room> room;
+    @JsonIgnore
+    @ManyToMany (mappedBy = "calendars")
+    private List<Room> rooms;
 
 }

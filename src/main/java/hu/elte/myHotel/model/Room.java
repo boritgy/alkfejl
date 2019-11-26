@@ -27,21 +27,16 @@ public class Room {
     private Integer capacity;
 
     @Column
-    private boolean balcony;
-
-    @Column
-    private boolean extrabed;
+    private Boolean balcony;
 
     @Column
     private Integer price;
 
-    @OneToMany(mappedBy = "room")
-    private List<Booking> booking;
+    @JsonIgnore
+    @ManyToMany (mappedBy = "rooms")
+    private List<Booking> bookings;
 
+    @JsonIgnore
     @ManyToMany
-    private List<Calendar> calendar;
-
-    public void setBooking(Booking b) {
-        booking.add(b);
-    }
+    private List<Calendar> calendars;
 }
