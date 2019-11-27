@@ -1,6 +1,6 @@
 <div>
     <h1>Booking list</h1>
-     <div>
+    <div>
         <app-status-filter
             [statusFilter]="statusFilter"
             (filterChange)="filterChange($event);"
@@ -15,11 +15,16 @@
             </tr>
         </thead>
         <tbody>
-                <tr>
-                    <td>Béla</td>
-                    <td>20200101</td>
-                    <td>NEW</td>
+            <ng-container *ngIf="filteredBookings.length > 0">
+                    <tr *ngFor="let booking of filteredBookings">
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.arriveDate }}</td>
+                    <td>{{ booking.status }}</td>
                 </tr>
+            </ng-container>
+            <tr *ngIf="filteredIssues.length === 0">
+                    <td colspan="3">No issues</td>
+            </tr>
         </tbody>
     </table>
 </div>
