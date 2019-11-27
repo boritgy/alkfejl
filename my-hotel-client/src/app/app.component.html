@@ -1,10 +1,11 @@
-<mat-toolbar>
-    <button mat-button routerLink="/"><mat-icon>home</mat-icon>Főoldal</button>
-    <button mat-button routerLink="/service">Szolgálatásaink</button>
-    <button mat-button routerLink="/gallery">Galéria</button>
-    <button mat-button routerLink="/bookings">Foglalásaim</button>
-    <button mat-button routerLink="/bookings/new">Foglalás</button>
-    <button mat-button routerLink="/about">Kapcsolat</button>
+<mat-toolbar color="primary">
+    <button mat-button routerLink="/">
+      <mat-icon>home</mat-icon>
+      My hotel
+    </button>
+      <button mat-button routerLink="/bookings">My bookings</button>
+      <button mat-button routerLink="/bookings/new">New booking</button>
   </mat-toolbar>
+
 <router-outlet></router-outlet>
 

@@ -18,9 +18,6 @@ import { RoutingModule } from './routing/routing.module';
 import { LandingComponent } from './landing/landing.component';
 import { StatusFilterComponent } from './status-filter/status-filter.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
-import { AboutComponent } from './about/about.component';
-import { ServiceComponent } from './service/service.component';
-import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +25,7 @@ import { GalleryComponent } from './gallery/gallery.component';
     BookingListComponent,
     BookingFormComponent,
     StatusFilterComponent,
-    LandingComponent,
-    AboutComponent,
-    ServiceComponent,
-    GalleryComponent
+    LandingComponent
   ],
   imports: [
     RoutingModule,
