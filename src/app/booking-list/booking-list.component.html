@@ -1,0 +1,30 @@
+<div>
+    <h1>Booking list</h1>
+    <div>
+        <app-status-filter
+            [statusFilter]="statusFilter"
+            (filterChange)="filterChange($event);"
+        ></app-status-filter>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Arrive date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="filteredBookings.length > 0">
+                    <tr *ngFor="let booking of filteredBookings">
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.arriveDate }}</td>
+                    <td>{{ booking.status }}</td>
+                </tr>
+            </ng-container>
+            <tr *ngIf="filteredIssues.length === 0">
+                    <td colspan="3">No issues</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
