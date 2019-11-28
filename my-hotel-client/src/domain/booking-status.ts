@@ -1,5 +1,5 @@
 export enum BookingStatus {
-    New = 'NEW',
-    Doing = 'DOING',
-    Done = 'DONE',
+    New = 'Új',
+    Doing = 'Folyamatban',
+    Done = 'Kész',
 }

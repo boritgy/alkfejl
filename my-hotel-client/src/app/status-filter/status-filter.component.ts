@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { BookingService } from '../booking.service';
 
 @Component({
   selector: 'app-status-filter',
@@ -7,15 +8,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class StatusFilterComponent implements OnInit {
 
-  @Input() statusFilter: string;
+  @Input() statusFilter: string = '';
   @Output() filterChange: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private bookingService: BookingService
+  ) { }
 
   ngOnInit() {
+    this.change(this.statusFilter);
   }
 
-  change(e: any) {
+  change(e: string) {
+    this.bookingService.filterChange(e);
     this.filterChange.emit(e);
   }
 

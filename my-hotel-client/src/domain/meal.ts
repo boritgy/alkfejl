@@ -1,5 +1,5 @@
 export enum Meal {
-    Breakfast = 'BREAKFAST',
-    HB = 'HB',
-    AllInclusive = 'ALLINCLUSIVE',
+    Breakfast = 'Reggeli',
+    HB = 'Félpanzió',
+    AllInclusive = 'All Inclusive',
 }
