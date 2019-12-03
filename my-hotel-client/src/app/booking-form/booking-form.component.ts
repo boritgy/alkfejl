@@ -3,6 +3,8 @@ import { Booking } from 'src/domain/booking';
 import { FormGroup } from '@angular/forms';
 import { BookingStatus } from 'src/domain/booking-status';
 import { Meal } from 'src/domain/meal';
+import { BookingService } from '../booking.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking-form',
@@ -36,6 +38,8 @@ export class BookingFormComponent implements OnInit {
   booking: Booking;
 
   constructor(
+    private bookingService: BookingService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -56,6 +60,7 @@ export class BookingFormComponent implements OnInit {
     if (!form.valid) {
       return;
     }
-    console.log(this.booking);
+    this.bookingService.createBooking(form.value);
+    this.router.navigate(['/', 'bookings']);
   }
 }

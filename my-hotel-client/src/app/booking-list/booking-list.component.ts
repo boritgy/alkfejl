@@ -17,6 +17,7 @@ export class BookingListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.bookingService.getBookings();
   }
 
 }

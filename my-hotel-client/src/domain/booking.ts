@@ -9,6 +9,6 @@ export interface Booking {
     leaveDate: string;
     price: number;
     status: BookingStatus;
-    createdAt: string;
-    modifiedAt: string;
+    createdAt: Date;
+    modifiedAt: Date;
 }

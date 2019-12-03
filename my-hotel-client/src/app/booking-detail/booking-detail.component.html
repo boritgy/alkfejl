@@ -1,0 +1,26 @@
+<div>
+    <div>
+        <span>Név:</span>
+        <span>{{ booking?.name }}</span>
+    </div>
+    <div>
+        <span>Létrehozás dátuma:</span>
+        <span>{{ booking?.createdAt | date:'yyyy.MM.dd.' }}</span>
+    </div>
+    <div>
+        <span>Állapot:</span>
+        <span>{{ booking?.status }}</span>
+    </div>
+    <div>
+        <span>Érkezés:</span>
+        <span>{{ booking?.arriveDate }}</span>
+    </div>
+    <div>
+        <span>Távozás:</span>
+        <span>{{ booking?.leaveDate }}</span>
+    </div>
+    <div>
+        <span>Étkezés:</span>
+        <span>{{ booking?.meal }}</span>
+    </div>
+</div>

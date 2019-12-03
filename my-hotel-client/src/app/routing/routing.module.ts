@@ -8,6 +8,7 @@ import { BookingFormComponent } from '../booking-form/booking-form.component';
 import { AboutComponent } from '../about/about.component';
 import { ServiceComponent } from '../service/service.component';
 import { GalleryComponent } from '../gallery/gallery.component';
+import { BookingDetailComponent } from '../booking-detail/booking-detail.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'gallery',
     component: GalleryComponent
+  },
+  {
+    path: 'bookings/:id',
+    component: BookingDetailComponent
   },
   {
     path: '**',

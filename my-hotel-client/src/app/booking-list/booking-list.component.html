@@ -1,6 +1,6 @@
 <div>
     <img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
-    <h1>Booking list</h1>
+    <h1>Foglalásaim</h1>
     <div>
         <app-status-filter></app-status-filter>
     </div>
@@ -18,6 +18,8 @@
         <tbody>
             <ng-container *ngIf="bookingService.filteredBookings.length > 0">
                 <tr *ngFor="let booking of bookingService.filteredBookings">
+                   <!-- [routerLink]="['/', 'bookings', booking.id]"-->
+                    
                     <td>{{ booking.name }}</td>
                     <td>{{ booking.arriveDate }}</td>
                     <td>{{ booking.leaveDate }}</td>

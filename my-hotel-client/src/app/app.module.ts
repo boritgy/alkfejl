@@ -21,6 +21,8 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
 import { AboutComponent } from './about/about.component';
 import { ServiceComponent } from './service/service.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { BookingDetailComponent } from './booking-detail/booking-detail.component';
+import { HeaderInterceptor } from './header-interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { GalleryComponent } from './gallery/gallery.component';
     LandingComponent,
     AboutComponent,
     ServiceComponent,
-    GalleryComponent
+    GalleryComponent,
+    BookingDetailComponent
   ],
   imports: [
     RoutingModule,
@@ -48,7 +51,13 @@ import { GalleryComponent } from './gallery/gallery.component';
     MatSelectModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

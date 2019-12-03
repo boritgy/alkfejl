@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { BookingStatus } from 'src/domain/booking-status';
 import { Booking } from 'src/domain/booking';
 import { Meal } from 'src/domain/meal';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingService {
+
+  //bookings: Booking[] = [];
 
   bookings: Booking[] = [
     {
@@ -35,7 +38,26 @@ export class BookingService {
 
   filteredBookings: Booking[] = this.bookings;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) {}
+
+  async getBookings() {
+    const bookings = await (this.http.get('bookings')
+      .toPromise() as Promise<any[]>);
+    this.filteredBookings = this.bookings = bookings.map(this.createBookingModel);
+  }
+
+  async getBooking(bookingId: number): Promise<Booking> {
+    const booking = await (this.http.get(`bookings/${bookingId}`)
+      .toPromise() as Promise<any>);
+    return this.createBookingModel(booking);
+  }
+
+  createBooking(booking: Booking) {
+    booking.id = 3;
+    this.bookings.push(booking);
+  }
 
   filterChange(filterValue: string) {
     if (typeof filterValue === 'string') {
@@ -48,5 +70,12 @@ export class BookingService {
         });
       }
     }
+  }
+
+  private createBookingModel(booking: any): Booking {
+    return {
+      ...booking,
+      createdAt: new Date(booking.createdAt),
+    } as Booking;
   }
 }
