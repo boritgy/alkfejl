@@ -1,29 +1,33 @@
 <div>
+    <img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
     <h1>Booking list</h1>
     <div>
-        <app-status-filter
-            [statusFilter]="statusFilter"
-            (filterChange)="filterChange($event);"
-        ></app-status-filter>
+        <app-status-filter></app-status-filter>
     </div>
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Arrive date</th>
-                <th>Status</th>
+                <th>Név</th>
+                <th>Érkezés</th>
+                <th>Távozás</th>
+                <th>Étkezés</th>
+                <th>Ár</th>
+                <th>Állapot</th>
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngIf="filteredBookings.length > 0">
-                    <tr *ngFor="let booking of filteredBookings">
+            <ng-container *ngIf="bookingService.filteredBookings.length > 0">
+                <tr *ngFor="let booking of bookingService.filteredBookings">
                     <td>{{ booking.name }}</td>
                     <td>{{ booking.arriveDate }}</td>
+                    <td>{{ booking.leaveDate }}</td>
+                    <td>{{ booking.meal }}</td>
+                    <td>{{ booking.price }}</td>
                     <td>{{ booking.status }}</td>
                 </tr>
             </ng-container>
-            <tr *ngIf="filteredIssues.length === 0">
-                    <td colspan="3">No issues</td>
+            <tr *ngIf="bookingService.filteredBookings.length === 0">
+                    <td colspan="3">Nincs foglalás</td>
             </tr>
         </tbody>
     </table>
