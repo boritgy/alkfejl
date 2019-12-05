@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Booking } from 'src/domain/booking';
-import { ActivatedRoute } from '@angular/router';
-import { BookingService } from '../booking.service';
+import { Component, OnInit } from "@angular/core";
+import { Booking } from "src/domain/booking";
+import { ActivatedRoute, Router } from "@angular/router";
+import { BookingService } from "../booking.service";
 
 @Component({
-  selector: 'app-booking-detail',
-  templateUrl: './booking-detail.component.html',
-  styleUrls: ['./booking-detail.component.css']
+  selector: "app-booking-detail",
+  templateUrl: "./booking-detail.component.html",
+  styleUrls: ["./booking-detail.component.css"]
 })
 export class BookingDetailComponent implements OnInit {
 
@@ -14,13 +14,17 @@ export class BookingDetailComponent implements OnInit {
 
   constructor( 
     private route: ActivatedRoute,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private router: Router
   ) {}
 
   async ngOnInit() {  
-    const bookingId = parseInt(
-      this.route.snapshot.params.id);
+    const bookingId = parseInt(this.route.snapshot.params.id);
     this.booking = await this.bookingService.getBooking(bookingId);
+  }
+
+  editBooking() {
+    this.router.navigate(["bookings", this.booking.id, "edit"]);
   }
 
 }

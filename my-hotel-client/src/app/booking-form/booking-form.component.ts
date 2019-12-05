@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Booking } from 'src/domain/booking';
 import { FormGroup } from '@angular/forms';
 import { BookingStatus } from 'src/domain/booking-status';
@@ -13,12 +13,16 @@ import { Router } from '@angular/router';
 })
 export class BookingFormComponent implements OnInit {
 
+  @Input() mode: 'create' | 'edit';
+  @Input() booking: Booking;
+  @Output() bookingSubmit: EventEmitter<Booking> = new EventEmitter();
+
   statuses = [{
     label: 'Új',
     value: 'NEW',
   }, {
     label: 'Folyamatban',
-    value: 'IN_PROGRESS',
+    value: 'DOING',
   }, {
     label: 'Kész',
     value: 'DONE',
@@ -35,32 +39,15 @@ export class BookingFormComponent implements OnInit {
     value: 'Breakfast',
   }]
 
-  booking: Booking;
 
-  constructor(
-    private bookingService: BookingService,
-    private router: Router
-  ) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.booking = {
-      id: null,
-      name: '',
-      meal: 'ALLINCLUSIVE' as Meal,
-      status: 'NEW' as BookingStatus,
-      arriveDate: '',
-      leaveDate: '',
-      price: null,
-      createdAt: null,
-      modifiedAt: null,
-    };
-  }
+  ngOnInit() {}
 
-  submitBooking(form: FormGroup) {
+  async submitBooking(form: FormGroup) {
     if (!form.valid) {
       return;
     }
-    this.bookingService.createBooking(form.value);
-    this.router.navigate(['/', 'bookings']);
+    this.bookingSubmit.emit(form.getRawValue() as Booking);
   }
 }

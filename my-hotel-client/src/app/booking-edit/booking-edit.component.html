@@ -1,0 +1,8 @@
+<div>
+    <h1>Foglalás szerkesztése</h1>
+    <app-booking-form
+        *ngIf="booking"
+        [booking]="booking"
+        [mode]="'edit'"
+    ></app-booking-form>
+</div>

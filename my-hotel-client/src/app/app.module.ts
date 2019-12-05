@@ -23,6 +23,9 @@ import { ServiceComponent } from './service/service.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { HeaderInterceptor } from './header-interceptor';
+import { BookingEditComponent } from './booking-edit/booking-edit.component';
+import { BookingNewComponent } from './booking-new/booking-new.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { HeaderInterceptor } from './header-interceptor';
     AboutComponent,
     ServiceComponent,
     GalleryComponent,
-    BookingDetailComponent
+    BookingDetailComponent,
+    BookingEditComponent,
+    BookingNewComponent,
+    LoginComponent
   ],
   imports: [
     RoutingModule,

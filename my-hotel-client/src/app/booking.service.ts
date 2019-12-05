@@ -9,9 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookingService {
 
-  //bookings: Booking[] = [];
+  bookings: Booking[] = [];
 
-  bookings: Booking[] = [
+  /*bookings: Booking[] = [
     {
       id: 1,
       name: 'Béla',
@@ -34,7 +34,7 @@ export class BookingService {
       createdAt: null,
       modifiedAt: null,
     },
-  ];
+  ];*/
 
   filteredBookings: Booking[] = this.bookings;
 
@@ -54,9 +54,12 @@ export class BookingService {
     return this.createBookingModel(booking);
   }
 
-  createBooking(booking: Booking) {
-    booking.id = 3;
-    this.bookings.push(booking);
+  async createBooking(booking: Booking): Promise<any> {
+    await this.http.post('bookings', booking).toPromise();
+  }
+
+  async modifyBooking(booking: Booking): Promise<any> {
+    await this.http.patch(`bookings/${booking.id}`, booking).toPromise();
   }
 
   filterChange(filterValue: string) {
@@ -64,7 +67,6 @@ export class BookingService {
       if (filterValue === '') {
         this.filteredBookings = this.bookings;
       } else {
-        // Lehet ciklussal is :)
         this.filteredBookings = this.bookings.filter(booking => {
           return booking.status === filterValue;
         });

@@ -17,9 +17,7 @@
         </thead>
         <tbody>
             <ng-container *ngIf="bookingService.filteredBookings.length > 0">
-                <tr *ngFor="let booking of bookingService.filteredBookings">
-                   <!-- [routerLink]="['/', 'bookings', booking.id]"-->
-                    
+                <tr *ngFor="let booking of bookingService.filteredBookings"[routerLink]="['/', 'bookings', booking.id]">
                     <td>{{ booking.name }}</td>
                     <td>{{ booking.arriveDate }}</td>
                     <td>{{ booking.leaveDate }}</td>

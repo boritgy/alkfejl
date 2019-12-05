@@ -70,7 +70,6 @@ public class Booking {
     @OneToOne
     private Extra extra;
 
-    @JsonIgnore
     @ManyToMany
     private List<Room> rooms;
 

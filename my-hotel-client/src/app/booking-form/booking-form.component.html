@@ -11,6 +11,7 @@
                 name="name"
                 required
                 #name="ngModel"
+                [disabled]="mode === 'edit'"
             />
             <mat-error *ngIf="name.invalid && (name.touched || name.dirty) && name.errors['required']">
                 Name is required!
@@ -45,7 +46,7 @@
                 name="arriveDate"
                 required
                 #arriveDate="ngModel"
-                pattern="PC-\d+"
+                pattern="20[1|2][0-9]-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
             />
             <mat-error *ngIf="arriveDate.invalid && (arriveDate.touched || arriveDate.dirty) && arriveDate.errors['required']">
                 Arrive date is required!
@@ -65,10 +66,10 @@
                     name="leaveDate"
                     required
                     #leaveDate="ngModel"
-                    pattern="PC-\d+"
+                    pattern="20[1|2][0-9]-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
                 />
                 <mat-error *ngIf="leaveDate.invalid && (leaveDate.touched || leaveDate.dirty) && leaveDate.errors['required']">
-                    Arrive date is required!
+                    Leave date is required!
                 </mat-error>
                 <mat-error *ngIf="leaveDate.invalid && (leaveDate.touched || leaveDate.dirty) && leaveDate.errors['pattern']">
                     Rossz dátum!
@@ -83,6 +84,7 @@
                 name="status"
                 required
                 #status="ngModel"
+                [disabled]="mode === 'create'"
             >
             <mat-option *ngFor="let status of statuses" [value]="status.value">
                 {{ status.label }}
@@ -94,7 +96,7 @@
         </mat-form-field>
         </div>
         <div>
-        <button mat-raised-button color="primary">Create</button>
+        <button mat-raised-button color="primary">Kész</button>
         </div>
     </form>
 </div>
