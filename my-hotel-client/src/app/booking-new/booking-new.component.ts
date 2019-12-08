@@ -27,9 +27,7 @@ export class BookingNewComponent implements OnInit {
       status: 'NEW' as BookingStatus,
       arriveDate: '',
       leaveDate: '',
-      price: null,
-      createdAt: null,
-      modifiedAt: null,
+      people: null
     };
   }
   async submitBooking(booking: Booking) {

@@ -1,9 +1,16 @@
 <mat-toolbar>
     <button mat-button routerLink="/"><mat-icon>home</mat-icon>Főoldal</button>
+    <ng-container *ngIf="authService.isLoggedIn">
+      <button mat-button routerLink="/bookings">Foglalásaim</button>
+      <button mat-button routerLink="/bookings/new" *appRole="[UserRole.User]">Foglalás</button>
+      <button mat-button (click)="authService.logout()">Kijelentkezés</button>
+    </ng-container>
+    <ng-container *ngIf="!authService.isLoggedIn">
+      <button mat-button routerLink="/login">Bejelentkezés</button>
+    </ng-container>
+    <br><br>
     <button mat-button routerLink="/service">Szolgálatásaink</button>
     <button mat-button routerLink="/gallery">Galéria</button>
-    <button mat-button routerLink="/bookings">Foglalásaim</button>
-    <button mat-button routerLink="/bookings/new">Foglalás</button>
     <button mat-button routerLink="/about">Kapcsolat</button>
   </mat-toolbar>
 <router-outlet></router-outlet>

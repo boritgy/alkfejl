@@ -4,8 +4,8 @@
         <span>{{ booking?.name }}</span>
     </div>
     <div>
-        <span>Létrehozás dátuma:</span>
-        <span>{{ booking?.createdAt | date:'yyyy.MM.dd.' }}</span>
+        <span>Vendégek száma:</span>
+        <span>{{ booking?.people }}</span>
     </div>
     <div>
         <span>Állapot:</span>
@@ -24,6 +24,6 @@
         <span>{{ booking?.meal }}</span>
     </div>
     <div>
-        <button mat-raised-button color="primary" (click)="editIssue()">Edit</button>
+        <button mat-raised-button (click)="editBooking()">Módosítás</button>
     </div>
 </div>

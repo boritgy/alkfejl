@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookingListComponent } from './booking-list/booking-list.component';
@@ -13,7 +13,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RoutingModule } from './routing/routing.module';
 import { LandingComponent } from './landing/landing.component';
 import { StatusFilterComponent } from './status-filter/status-filter.component';
@@ -26,6 +26,7 @@ import { HeaderInterceptor } from './header-interceptor';
 import { BookingEditComponent } from './booking-edit/booking-edit.component';
 import { BookingNewComponent } from './booking-new/booking-new.component';
 import { LoginComponent } from './login/login.component';
+import { RoleDirective } from './role.directive';
 
 @NgModule({
   declarations: [
@@ -40,13 +41,14 @@ import { LoginComponent } from './login/login.component';
     BookingDetailComponent,
     BookingEditComponent,
     BookingNewComponent,
-    LoginComponent
+    LoginComponent,
+    RoleDirective,
   ],
   imports: [
     RoutingModule,
-    NgbModule,
+    //NgbModule,
     BrowserModule,
-    AppRoutingModule,
+    //AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,

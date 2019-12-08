@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BookingListComponent } from "../booking-list/booking-list.component";
@@ -11,6 +10,9 @@ import { GalleryComponent } from '../gallery/gallery.component';
 import { BookingDetailComponent } from '../booking-detail/booking-detail.component';
 import { BookingNewComponent } from '../booking-new/booking-new.component';
 import { BookingEditComponent } from '../booking-edit/booking-edit.component';
+import { LoginComponent } from '../login/login.component';
+import { UserRole } from 'src/domain/user-role';
+import { RoleGuard } from '../role.guard';
 
 const routes: Routes = [
   {
@@ -20,11 +22,19 @@ const routes: Routes = [
   },
   {
     path: 'bookings',
-    component: BookingListComponent
+    component: BookingListComponent,
+   /* data: {
+      roles: [UserRole.Admin, UserRole.User],
+    },
+    canActivate: [RoleGuard],*/
   },
   {
     path: 'bookings/new',
-    component: BookingNewComponent
+    component: BookingNewComponent,
+    data: {
+      roles: [UserRole.User],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: 'about',
@@ -40,11 +50,27 @@ const routes: Routes = [
   },
   {
     path: 'bookings/:id',
-    component: BookingDetailComponent
+    component: BookingDetailComponent,
+    data: {
+      roles: [UserRole.Admin, UserRole.User],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: 'bookings/:id/edit',
-    component: BookingEditComponent
+    component: BookingEditComponent,
+    data: {
+      roles: [UserRole.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      roles: [UserRole.Guest],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: '**',
@@ -55,6 +81,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  exports: [ RouterModule ],
+
 })
 export class RoutingModule { }

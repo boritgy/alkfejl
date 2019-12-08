@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Booking } from "src/domain/booking";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BookingService } from "../booking.service";
+import { UserRole } from 'src/domain/user-role';
 
 @Component({
   selector: "app-booking-detail",
@@ -9,7 +10,7 @@ import { BookingService } from "../booking.service";
   styleUrls: ["./booking-detail.component.css"]
 })
 export class BookingDetailComponent implements OnInit {
-
+  UserRole = UserRole;
   booking: Booking;
 
   constructor( 

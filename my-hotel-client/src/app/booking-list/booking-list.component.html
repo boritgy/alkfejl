@@ -1,5 +1,5 @@
-<div>
-    <img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
+<img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
+<div style="padding-left: 4em;">
     <h1>Foglalásaim</h1>
     <div>
         <app-status-filter></app-status-filter>
@@ -7,12 +7,12 @@
     <table>
         <thead>
             <tr>
-                <th>Név</th>
-                <th>Érkezés</th>
-                <th>Távozás</th>
-                <th>Étkezés</th>
-                <th>Ár</th>
-                <th>Állapot</th>
+                <th>Név </th>
+                <th>Érkezés </th>
+                <th>Távozás </th>
+                <th>Étkezés </th>
+                <th>Vendégek száma </th>
+                <th>Állapot </th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                     <td>{{ booking.arriveDate }}</td>
                     <td>{{ booking.leaveDate }}</td>
                     <td>{{ booking.meal }}</td>
-                    <td>{{ booking.price }}</td>
+                    <td>{{ booking.people }}</td>
                     <td>{{ booking.status }}</td>
                 </tr>
             </ng-container>

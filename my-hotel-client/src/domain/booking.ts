@@ -7,8 +7,6 @@ export interface Booking {
     meal: Meal;
     arriveDate: string;
     leaveDate: string;
-    price: number;
+    people: number;
     status: BookingStatus;
-    createdAt: Date;
-    modifiedAt: Date;
 }

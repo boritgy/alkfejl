@@ -1,5 +1,5 @@
+<img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
 <div style="padding-left: 4em;">
-    <img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
     <h1>Foglalás</h1>
     <form #form="ngForm" (ngSubmit)="submitBooking(form.form)">
         <div>
@@ -11,48 +11,47 @@
                 name="name"
                 required
                 #name="ngModel"
-                [disabled]="mode === 'edit'"
             />
             <mat-error *ngIf="name.invalid && (name.touched || name.dirty) && name.errors['required']">
-                Name is required!
+                Kötelező kitölteni!
             </mat-error>
         </mat-form-field>
         </div>
         <div>
-        <mat-form-field>
-                <mat-label>Étkezés</mat-label>
-                <mat-select
-                    [(ngModel)]="booking.meal"
-                    name="meal"
+            <mat-form-field>
+                <input
+                    matInput
+                    placeholder="Vendégek száma"
+                    [(ngModel)]="booking.people"
+                    name="people"
+                    type="number"
                     required
-                    #meal="ngModel"
-                >
-                <mat-option *ngFor="let meal of meals" [value]="meal.value">
-                    {{ meal.label }}
-                </mat-option>
-                </mat-select>
-                <mat-error *ngIf="meal.invalid && (meal.touched || meal.dirty) && meal.errors['required']">
-                    Meal is required!
+                    #people="ngModel"
+                />
+                <mat-error *ngIf="people.invalid && (people.touched || people.dirty) && people.errors['required']">
+                    Kötelező kitölteni!
                 </mat-error>
             </mat-form-field>
-        </div>
+            </div>
+        <br>
         <div>
         <mat-form-field>
             <input
                 matInput
                 placeholder="Érkezés"
                 value=""
+                type = "date"
                 [(ngModel)]="booking.arriveDate"
                 name="arriveDate"
                 required
                 #arriveDate="ngModel"
-                pattern="20[1|2][0-9]-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"
             />
             <mat-error *ngIf="arriveDate.invalid && (arriveDate.touched || arriveDate.dirty) && arriveDate.errors['required']">
-                Arrive date is required!
+                Kötelező kitölteni!
             </mat-error>
             <mat-error *ngIf="arriveDate.invalid && (arriveDate.touched || arriveDate.dirty) && arriveDate.errors['pattern']">
-                Rossz dátum!
+                Rossz dátum! Kérlek formátumban írd: YYYY-MM-DD.
             </mat-error>
         </mat-form-field>
         </div>
@@ -62,41 +61,60 @@
                     matInput
                     placeholder="Távozás"
                     value=""
+                    type = "date"
                     [(ngModel)]="booking.leaveDate"
                     name="leaveDate"
                     required
                     #leaveDate="ngModel"
-                    pattern="20[1|2][0-9]-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                    pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"
                 />
                 <mat-error *ngIf="leaveDate.invalid && (leaveDate.touched || leaveDate.dirty) && leaveDate.errors['required']">
-                    Leave date is required!
+                    Kötelező kitölteni!
                 </mat-error>
                 <mat-error *ngIf="leaveDate.invalid && (leaveDate.touched || leaveDate.dirty) && leaveDate.errors['pattern']">
-                    Rossz dátum!
+                    Rossz dátum! Kérlek formátumban írd: YYYY-MM-DD.
                 </mat-error>
             </mat-form-field>
         </div>
         <div>
-        <mat-form-field>
-            <mat-label>Állapot</mat-label>
-            <mat-select
-                [(ngModel)]="booking.status"
-                name="status"
-                required
-                #status="ngModel"
-                [disabled]="mode === 'create'"
-            >
-            <mat-option *ngFor="let status of statuses" [value]="status.value">
-                {{ status.label }}
-            </mat-option>
-            </mat-select>
-            <mat-error *ngIf="status.invalid && (status.touched || status.dirty) && status.errors['required']">
-                Status is required!
-            </mat-error>
-        </mat-form-field>
-        </div>
-        <div>
-        <button mat-raised-button color="primary">Kész</button>
-        </div>
+            <mat-form-field>
+                    <mat-label>Étkezés</mat-label>
+                    <mat-select
+                        [(ngModel)]="booking.meal"
+                        name="meal"
+                        required
+                        #meal="ngModel"
+                    >
+                    <mat-option *ngFor="let meal of meals" [value]="meal.value">
+                        {{ meal.label }}
+                    </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="meal.invalid && (meal.touched || meal.dirty) && meal.errors['required']">
+                        Kötelező kitölteni!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Állapot</mat-label>
+                    <mat-select
+                        [(ngModel)]="booking.status"
+                        name="status"
+                        required
+                        #status="ngModel"
+                    >
+                    <mat-option *ngFor="let status of statuses" [value]="status.value">
+                        {{ status.label }}
+                    </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="status.invalid && (status.touched || status.dirty) && status.errors['required']">
+                        Kötelező kitölteni!
+                    </mat-error>
+                </mat-form-field>
+                </div>
+            <div>
+                <button mat-raised-button [disabled]="form.invalid">Foglalás</button>
+                </div>
+        <br><br>
     </form>
 </div>

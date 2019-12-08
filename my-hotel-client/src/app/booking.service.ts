@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BookingStatus } from 'src/domain/booking-status';
 import { Booking } from 'src/domain/booking';
-import { Meal } from 'src/domain/meal';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,31 +9,6 @@ import { HttpClient } from '@angular/common/http';
 export class BookingService {
 
   bookings: Booking[] = [];
-
-  /*bookings: Booking[] = [
-    {
-      id: 1,
-      name: 'Béla',
-      meal: Meal.Breakfast,
-      status: BookingStatus.New,
-      arriveDate: '2019.01.01.',
-      leaveDate: '2019.01.07.',
-      price: 300,
-      createdAt: null,
-      modifiedAt: null,
-    },
-    {
-      id: 2,
-      name: 'Cili',
-      meal: Meal.HB,
-      status: BookingStatus.Doing,
-      arriveDate: '2019.01.01',
-      leaveDate: '2019.01.07',
-      price: 500,
-      createdAt: null,
-      modifiedAt: null,
-    },
-  ];*/
 
   filteredBookings: Booking[] = this.bookings;
 
