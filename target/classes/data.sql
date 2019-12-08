@@ -1,6 +1,6 @@
-INSERT INTO booking (name, meal, arrive_date, leave_date, price, status, created_at, modified_at) VALUES ('Anna','BREAKFAST', '2019.10.12.', '2019.10.19.',  25000, 'NEW', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
-INSERT INTO booking (name, meal, arrive_date, leave_date, price, status, created_at, modified_at) VALUES ('Panna','ALLINCLUSIVE', '2019.10.12.', '2019.10.19.',  10000, 'NEW', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
-INSERT INTO booking (name, meal, arrive_date, leave_date, price, status, created_at, modified_at) VALUES ('Hanna','HB', '2019.10.26.', '2019.11.02.',  5000, 'NEW', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
+INSERT INTO booking (name, meal, arrive_date, leave_date, people, status) VALUES ('Anna','BREAKFAST', '2019.10.12.', '2019.10.19.',  5, 'NEW');
+INSERT INTO booking (name, meal, arrive_date, leave_date, people, status) VALUES ('Panna','ALLINCLUSIVE', '2019.10.12.', '2019.10.19.',  2, 'NEW');
+INSERT INTO booking (name, meal, arrive_date, leave_date, people, status) VALUES ('Hanna','HB', '2019.10.26.', '2019.11.02.',  5, 'NEW');
 
 INSERT INTO user (name, username, password, role) VALUES ('Anna', 'anna', '$2a$10$R/iQxOlyRVqTCmm5YMHTiuDmXCYLec4gn3x279jxQPA4GgdUX03z.', 'ROLE_ADMIN');
 INSERT INTO user (name, username, password, role) VALUES ('Hanna', 'hanna', '$2a$10$R/iQxOlyRVqTCmm5YMHTiuDmXCYLec4gn3x279jxQPA4GgdUX03z.', 'ROLE_USER');
