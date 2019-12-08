@@ -1,6 +1,5 @@
 package hu.elte.myHotel.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,4 +41,8 @@ public class Extra {
 
     @OneToOne
     private Booking booking;
+
+    public void setBooking(Booking b){
+        booking = b;
+    }
 }

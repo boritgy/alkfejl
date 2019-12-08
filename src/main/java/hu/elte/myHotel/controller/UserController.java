@@ -2,6 +2,7 @@ package hu.elte.myHotel.controller;
 
 import hu.elte.myHotel.model.User;
 import hu.elte.myHotel.repository.UserRepository;
+import hu.elte.myHotel.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,6 +14,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -31,7 +36,8 @@ public class UserController {
     }
 
     @GetMapping("login")
-    public ResponseEntity login() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<User> login() {
+        return ResponseEntity.ok(authenticatedUser).getUser();
     }
+
 }

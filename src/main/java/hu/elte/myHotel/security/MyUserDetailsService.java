@@ -1,10 +1,8 @@
 package hu.elte.myHotel.security;
 
-import hu.elte.myHotel.model.Booking;
 import hu.elte.myHotel.model.User;
 import hu.elte.myHotel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +17,7 @@ import java.util.Set;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
+    
     @Autowired
     private AuthenticatedUser authenticatedUser;
 

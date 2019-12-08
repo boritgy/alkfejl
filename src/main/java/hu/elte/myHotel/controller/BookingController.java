@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
@@ -40,8 +38,21 @@ public class BookingController {
             @RequestBody Booking booking
     ) {
         booking.setUser(authenticatedUser.getUser());
-        Booking savedIssue = bookingRepository.save(booking);
-        return ResponseEntity.ok(savedIssue);
+        Booking savedBooking = bookingRepository.save(booking);
+        return ResponseEntity.ok(savedBooking);
+    }
+
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @GetMapping("/{id}")
+    public ResponseEntity<Booking> getBooking(
+            @PathVariable Integer id
+    ) {
+        Optional<Booking> oBooking = bookingRepository.findById(id);
+        if (oBooking.isPresent()) {
+            return ResponseEntity.ok(oBooking.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Secured({ "ROLE_ADMIN" })
@@ -57,15 +68,15 @@ public class BookingController {
             }
             Booking oldBooking = oBooking.get();
             oldBooking.setStatus(booking.getStatus());
-            Booking savedIssue = bookingRepository.save(oldBooking);
+            oldBooking.setArriveDate(booking.getArriveDate());
+            oldBooking.setLeaveDate(booking.getLeaveDate());
+            oldBooking.setMeal(booking.getMeal());
+            oldBooking.setPeople(booking.getPeople());
+            oldBooking.setName(booking.getName());
 
-            /*
-            issue.setId(oldIssue.getId());
-            issue.setMessages(oldIssue.getMessages());
-            ...
-             */
+            Booking savedBooking = bookingRepository.save(oldBooking);
 
-            return ResponseEntity.ok(savedIssue);
+            return ResponseEntity.ok(savedBooking);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -85,7 +96,7 @@ public class BookingController {
         }
     }
 
-    @PostMapping("/{id}/messages")
+    @PostMapping("/{id}/extras")
     public ResponseEntity<Extra> addExtra(
             @RequestBody Extra extra,
             @PathVariable Integer id
