@@ -15,7 +15,7 @@ import org.springframework.http.HttpMethod;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(securedEnabled = true)  //ez volt kikommentezve
+@EnableGlobalMethodSecurity(securedEnabled = true)  //ez volt kikommentezve
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/h2/**", "/users").permitAll()   // important!
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .and()

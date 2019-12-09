@@ -37,7 +37,7 @@ public class UserController {
 
     @GetMapping("login")
     public ResponseEntity<User> login() {
-        return ResponseEntity.ok(authenticatedUser).getUser();
+        return ResponseEntity.ok(authenticatedUser.getUser());
     }
 
 }

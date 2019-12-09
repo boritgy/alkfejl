@@ -49,8 +49,6 @@ public class Booking {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-
-
     @ManyToOne
     private User user;
 
@@ -63,7 +61,7 @@ public class Booking {
     @ManyToOne
     private Calendar calendar;
 
-    public void setExtra(Extra e){
+    /*public void setExtra(Extra e){
         extra = e;
     }
 
@@ -117,5 +115,5 @@ public class Booking {
 
     public Meal getMeal() {
         return meal;
-    }
+    }*/
 }

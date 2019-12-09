@@ -46,7 +46,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;
 
-    public String getUsername() {
+   /* public String getUsername() {
         return username;
     }
 
@@ -68,5 +68,5 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
+    }*/
 }

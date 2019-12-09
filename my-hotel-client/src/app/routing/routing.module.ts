@@ -23,10 +23,10 @@ const routes: Routes = [
   {
     path: 'bookings',
     component: BookingListComponent,
-   /* data: {
+    data: {
       roles: [UserRole.Admin, UserRole.User],
     },
-    canActivate: [RoleGuard],*/
+    canActivate: [RoleGuard],
   },
   {
     path: 'bookings/new',
@@ -79,9 +79,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+ 
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ],
-
+  declarations: [],
 })
 export class RoutingModule { }

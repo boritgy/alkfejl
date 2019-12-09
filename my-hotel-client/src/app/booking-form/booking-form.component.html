@@ -102,6 +102,7 @@
                         name="status"
                         required
                         #status="ngModel"
+                        [disabled]="mode === 'create'"
                     >
                     <mat-option *ngFor="let status of statuses" [value]="status.value">
                         {{ status.label }}

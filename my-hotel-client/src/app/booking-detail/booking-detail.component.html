@@ -24,6 +24,6 @@
         <span>{{ booking?.meal }}</span>
     </div>
     <div>
-        <button mat-raised-button (click)="editBooking()">Módosítás</button>
+        <button mat-raised-button (click)="editBooking()" *appRole="[UserRole.Admin]">Módosítás</button>
     </div>
 </div>
