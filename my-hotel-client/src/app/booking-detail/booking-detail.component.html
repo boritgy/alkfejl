@@ -1,29 +1,33 @@
-<div>
+<img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
+<div style="padding-right: 4em;">
+    <h1>Módosítás</h1>
     <div>
-        <span>Név:</span>
+        <span><b>Név:   </b></span>
         <span>{{ booking?.name }}</span>
     </div>
     <div>
-        <span>Vendégek száma:</span>
+        <span><b>Vendégek száma:   </b></span>
         <span>{{ booking?.people }}</span>
     </div>
     <div>
-        <span>Állapot:</span>
+        <span><b>Állapot:   </b></span>
         <span>{{ booking?.status }}</span>
     </div>
     <div>
-        <span>Érkezés:</span>
+        <span><b>Érkezés:   </b></span>
         <span>{{ booking?.arriveDate }}</span>
     </div>
     <div>
-        <span>Távozás:</span>
+        <span><b>Távozás:   </b></span>
         <span>{{ booking?.leaveDate }}</span>
     </div>
     <div>
-        <span>Étkezés:</span>
+        <span><b>Étkezés:   </b></span>
         <span>{{ booking?.meal }}</span>
     </div>
+    <br>
     <div>
         <button mat-raised-button (click)="editBooking()" *appRole="[UserRole.Admin]">Módosítás</button>
     </div>
+    <br>
 </div>
