@@ -10,8 +10,8 @@
         <mat-icon class="icon">input</mat-icon>
         <button mat-button (click)="authService.logout()">Kijelentkezés</button>
       </ng-container>
-    <span class = "filler"></span>
     <ng-container *ngIf="!authService.isLoggedIn">
+        <span class = "filler"></span>
         <mat-icon class="icon">input</mat-icon>
       <button mat-button routerLink="/login">Bejelentkezés</button>
     </ng-container>
