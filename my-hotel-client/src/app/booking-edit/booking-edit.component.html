@@ -1,10 +1,6 @@
-<img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
-<div style="padding-left: 4em;">
-    <h1>Foglalás szerkesztése</h1>
-    <app-booking-form
-        *ngIf="booking"
-        [booking]="booking"
-        [mode]="'edit'"
-        (bookingSubmit)="submitBooking($event)"
-    ></app-booking-form>
-</div>
+<app-booking-form
+    *ngIf="booking"
+    [booking]="booking"
+    [mode]="'edit'"
+    (bookingSubmit)="submitBooking($event)"
+></app-booking-form>
