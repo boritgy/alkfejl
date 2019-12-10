@@ -11,6 +11,7 @@ import { BookingDetailComponent } from '../booking-detail/booking-detail.compone
 import { BookingNewComponent } from '../booking-new/booking-new.component';
 import { BookingEditComponent } from '../booking-edit/booking-edit.component';
 import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 import { UserRole } from 'src/domain/user-role';
 import { RoleGuard } from '../role.guard';
 
@@ -67,6 +68,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    data: {
+      roles: [UserRole.Guest],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
     data: {
       roles: [UserRole.Guest],
     },

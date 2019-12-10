@@ -1,0 +1,55 @@
+<img class="jpg-icon"  src="assets/img/title.jpg" style="max-width: 100%; min-width: 100%;">
+<div align="center">
+  <h1>Regisztráció</h1>
+<form #form="ngForm" (ngSubmit)="onSubmit(form.form)">
+    <div>
+        <mat-form-field>
+            <input
+              matInput
+              placeholder="Név"
+              required
+              [(ngModel)]="user.name"
+              name="name"
+              #name="ngModel"
+            />
+            <mat-error *ngIf="name.invalid">Kötelező kitölteni!</mat-error>
+        </mat-form-field>
+    </div>
+  <div>
+      <mat-form-field>
+          <input
+              matInput
+              placeholder="Felhasználónév"
+              required
+              [(ngModel)]="user.username"
+              name="username"
+              #username="ngModel"
+          />
+          <mat-error *ngIf="username.invalid">Kötelező kitölteni!</mat-error>
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field>
+          <input
+            matInput
+            placeholder="Jelszó"
+            required
+            type="password"
+            [(ngModel)]="user.password"
+            name="password"
+            #password="ngModel"
+          />
+          <mat-error *ngIf="password.invalid">Kötelező kitölteni!</mat-error>
+      </mat-form-field>
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      type="submit"
+      [disabled]="form.form.invalid"
+    >Regisztráció
+    </button>
+  </div>
+  </form>
+  <br>
+</div>

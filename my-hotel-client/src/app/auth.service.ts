@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { User } from 'src/domain/user';
 import { UserRole } from 'src/domain/user-role';
 import { Router } from '@angular/router';
@@ -35,6 +35,7 @@ export class AuthService {
   async login(username: string, password: string) {
     const oldUser = this.user;
     this.user = {
+      id: null,
       name: null,
       role: UserRole.Guest,
       username: username,
@@ -42,6 +43,7 @@ export class AuthService {
     };
     try {
       const user = await (this.http.get('users/login').toPromise() as Promise<User>);
+      this.user.id = user.id;
       this.user.name = user.name;
       this.user.role = user.role;
       this.router.navigate(['/']);
@@ -50,8 +52,21 @@ export class AuthService {
     }
   }
 
+  async register(name: string, username: string, password: string): Promise<any> {
+    let newuser = {
+      id: 5,
+      name: name,
+      role: UserRole.User,
+      username: username,
+      password: password,
+    };
+      this.http.post('users', newuser).subscribe();
+      this.router.navigate(['login']);
+  }
+
   logout(shouldNavigateToRoot: boolean = true) {
     this.user = {
+      id: null,
       name: 'Guest',
       username: null,
       password: null,

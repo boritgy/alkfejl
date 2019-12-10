@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BookingStatus } from 'src/domain/booking-status';
 import { Booking } from 'src/domain/booking';
 import { HttpClient } from '@angular/common/http';
+import { User } from 'src/domain/user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class BookingService {
 
   bookings: Booking[] = [];
+
+  private user: User;
 
   filteredBookings: Booking[] = this.bookings;
 
@@ -25,7 +28,7 @@ export class BookingService {
   async getBooking(bookingId: number): Promise<Booking> {
     const booking = await (this.http.get(`bookings/${bookingId}`)
       .toPromise() as Promise<any>);
-    return this.createBookingModel(booking);
+      return this.createBookingModel(booking);
   }
 
   async createBooking(booking: Booking): Promise<any> {
@@ -37,6 +40,7 @@ export class BookingService {
   }
 
   filterChange(filterValue: string) {
+    
     if (typeof filterValue === 'string') {
       if (filterValue === '') {
         this.filteredBookings = this.bookings;

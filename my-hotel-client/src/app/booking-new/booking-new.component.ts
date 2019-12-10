@@ -30,6 +30,7 @@ export class BookingNewComponent implements OnInit {
       people: null
     };
   }
+  
   async submitBooking(booking: Booking) {
       await this.bookingService.createBooking(booking);
       this.router.navigate(['/', 'bookings']);

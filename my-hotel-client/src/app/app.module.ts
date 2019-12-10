@@ -27,6 +27,7 @@ import { BookingEditComponent } from './booking-edit/booking-edit.component';
 import { BookingNewComponent } from './booking-new/booking-new.component';
 import { LoginComponent } from './login/login.component';
 import { RoleDirective } from './role.directive';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { RoleDirective } from './role.directive';
     BookingNewComponent,
     LoginComponent,
     RoleDirective,
+    RegisterComponent
   ],
   imports: [
     RoutingModule,
